@@ -31,12 +31,12 @@ const Header = styled.header`
 const Nav = styled.nav`
     grid-area:nav;
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:1fr;
     align-items:center;
     justify-items:center;
     justify-self: end;
     @media only screen and (min-width: 600px) {
-        grid-template-rows:repeat(4,1fr);
+        grid-template-rows:1fr;
         grid-template-columns:none;
         justify-self: initial;
         align-self: end;
