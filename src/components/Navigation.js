@@ -1,23 +1,23 @@
-import React from "react"
+import React, {useState} from "react"
 import Logo from "../logo.svg"
 import styled from 'styled-components'
+import DropDown from "./DropDown"
+
 //https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
+//import {GFLogo} from "./GFLogo"
 
 const Header = styled.header`
   grid-area:header;
   display: grid;
-  grid-template-columns:50px 2fr;
   grid-template-areas: "logo nav";
-  
+
   position:fixed;
-  width: 100vw;
+  width: 100%;
   bottom:0; 
   
-  background-color: #eaeafb;
+  background-color: #11497B;
   
   @media only screen and (min-width: 600px) {
-    grid-template-rows:50px 2fr;
-    background-color:pink;
     bottom:initial;
     left:0;
     grid-template-areas: 
@@ -31,29 +31,38 @@ const Header = styled.header`
 const Nav = styled.nav`
     grid-area:nav;
     display:grid;
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(5,auto);
     align-items:center;
     justify-items:center;
     justify-self: end;
     @media only screen and (min-width: 600px) {
-        grid-template-rows:1fr;
+        grid-template-rows:repeat(5,auto);
         grid-template-columns:none;
         justify-self: initial;
         align-self: end;
-    
     }
-
       }
+`
+const StyledLogo = styled.img`
+      display:none;
+@media only screen and (min-width: 600px) {
+    display: inline
+}
 `
 
 const Navigation = () => {
+  
     return (
         <Header>
-            <img src={Logo} width="50" height="50" />
+            <StyledLogo alt="ff" src={Logo} width="50" height="50" />
             <Nav>
-                <a href="#"> out</a>
+            
+
+                <a href="#"> <i class="material-icons md-light">account_circle</i>
+</a>
             </Nav>
-        </Header>
+           <DropDown/>
+                   </Header>
     )
 }
 export default Navigation
