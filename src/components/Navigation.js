@@ -1,7 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import Logo from "../logo.svg"
 import styled from 'styled-components'
-//https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
 
 const Header = styled.header`
   grid-area:header;
@@ -10,7 +9,7 @@ const Header = styled.header`
   grid-template-areas: "logo nav";
   
   position:fixed;
-  width: 100vw;
+  width: 100%;
   bottom:0; 
   
   background-color: #eaeafb;
@@ -45,13 +44,32 @@ const Nav = styled.nav`
 
       }
 `
+const StyledDropdown = styled.div`
+//display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  margin-bottom: 150px;
+`
+
 
 const Navigation = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleDropdown = () => {
+        setIsVisible(!isVisible)
+    }
     return (
         <Header>
             <img src={Logo} width="50" height="50" />
             <Nav>
-                <a href="#"> out</a>
+                {isVisible ? <StyledDropdown><p>hello</p></StyledDropdown> : ""}
+
+
+                <a href="#" onClick={toggleDropdown}> out</a>
+
             </Nav>
         </Header>
     )
